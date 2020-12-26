@@ -29,8 +29,9 @@ class Program:
         print ("********************************************")
         print ("Recent files list: \n {}".format(self.file_recents))
         print ("********************************************")
+    
         
-    def recentList_add(self)
+  #  def recentList_add(self)
 
 
 
@@ -53,9 +54,19 @@ class test():
 
 
     def test_recetListInit(self):
-        #should be null
+        #should be empty
         self.Program.recentList_print()
 
+    def test_recentList_add(self):
+        self.Program.list_files()
+        self.Program.open_file(5)
+        self.Program.open_file(6)
+        self.Program.open_file(7)
+        self.Program.open_file(8)
+        self.Program.open_file(5)
+        self.Program.recentList_print
+
+
         
 
 
@@ -69,3 +80,8 @@ class test():
 
 
 
+directory = 'files/'
+x = Program(directory)
+test_class = test(x)
+##print att
+test_class.test_recetListInit()
