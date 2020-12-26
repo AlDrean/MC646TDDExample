@@ -11,6 +11,8 @@ class Program:
         self.file_content = ""
         self.file_recents = []
         self.file_recents_num = []
+        self.recentlist_limit = 5
+        self.block = 0
 
     def list_files(self):
         self.file_List = [f for f in listdir(self.directory) if isfile(join(self.directory, f))]
@@ -21,7 +23,7 @@ class Program:
         self.selectFile = numFile
         f = open(self.directory+self.file_List[self.selectFile], "r")
         
-        print ("[OPENNING FILE] - {}".format(self.directory+self.file_List[self.selectFile]))
+        print ("[OPENNING FILE] -[{}] {}".format(self.selectFile,self.directory+self.file_List[self.selectFile]))
         self.file_content = f.read()
         f.close()
 
@@ -30,6 +32,13 @@ class Program:
         return self.file_content
 
     def recentList_add(self,num,name):
+        if self.block: return 0
+
+        if len(self.file_recents) >= self.recentlist_limit:
+            self.file_recents=self.file_recents[:-1]
+            self.file_recents_num=self.file_recents_num[:-1]
+
+
         if name in self.file_recents:
             self.file_recents.remove(name)
             self.file_recents.insert(0,name)
@@ -45,9 +54,27 @@ class Program:
     def recentList_print(self):
         print ("********************************************")
         print ("Recent files list: \n {}".format(self.file_recents))
+        print ("Recent files list_num: \n {}".format(self.file_recents_num))
         print ("********************************************")
     
+    def lockRecentList(self):
+        print ("********************************************")
+        print ("blocking recent list")
+    
+        print ("********************************************")
+    
+        self.block =1
+
+    def unLockRecentList(self):
         
+        print ("********************************************")
+        print ("unblocking recent list")
+    
+        print ("********************************************")
+    
+        self.block =0
+
+
   #  def recentList_add(self)
 
 
@@ -76,9 +103,8 @@ class test():
 
     def test_recentList_add(self):
         #esperada saida dos noems dos arquivos com o primeiro primeiro sendo o 5;
-        self.Program.setRecentfilesLimit = 10
+        self.Program.recentlist_limit = 10
         self.Program.list_files()
-        self.Program.open_file(5)
         self.Program.open_file(1)
         self.Program.open_file(2)
         self.Program.open_file(3)
@@ -89,14 +115,14 @@ class test():
         self.Program.open_file(8)
         self.Program.open_file(9)
         self.Program.open_file(10)
-        self.Program.blockRecentList();
+        self.Program.lockRecentList()
         self.Program.open_file(11)
         self.Program.open_file(12)
         self.Program.open_file(13)
         self.Program.open_file(14)
         self.Program.open_file(15)
 
-        self.Program.UnBlockRecentList();
+        self.Program.unLockRecentList()
         self.Program.open_file(16)
         self.Program.open_file(17)
         
