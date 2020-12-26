@@ -7,6 +7,7 @@ class Program:
     def __init__(self, directory):
         self.directory = directory
         self.file_List = []
+        self.selectFile = -1
 
     def list_files(self):
         self.file_List = [f for f in listdir(self.directory) if isfile(join(self.directory, f))]
@@ -21,6 +22,15 @@ class test():
     def test_listFiles(self):
         #Class for testing if listing all the files in the default directory;
         self.Program.list_files()
+        #assert equal listing
+
+    def test_openFile(self,selectedfile):
+        self.selectFile = selectedfile
+        f = self.Program.open_file(self.selectFile)
+        print (f)
+
+        
+
 
     
 
@@ -31,5 +41,4 @@ directory = 'files/'
 x = Program(directory)
 test_class = test(x)
 
-x.list_files()
-    
+test_class.test_openFile(5)    
