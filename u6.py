@@ -58,6 +58,7 @@ class test():
         self.Program.recentList_print()
 
     def test_recentList_add(self):
+        #esperada saida dos noems dos arquivos com o primeiro primeiro sendo o 5;
         self.Program.list_files()
         self.Program.open_file(5)
         self.Program.open_file(6)
