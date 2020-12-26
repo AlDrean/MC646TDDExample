@@ -74,7 +74,6 @@ class Program:
     
         self.block =0
 
-
   #  def recentList_add(self)
 
 
@@ -126,6 +125,9 @@ class test():
         self.Program.open_file(16)
         self.Program.open_file(17)
         
+        self.Program.recentList_print()
+
+        self.Program.clearRecentList()
         self.Program.recentList_print()
 
 
