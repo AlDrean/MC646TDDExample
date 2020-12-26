@@ -76,13 +76,33 @@ class test():
 
     def test_recentList_add(self):
         #esperada saida dos noems dos arquivos com o primeiro primeiro sendo o 5;
+        self.Program.setRecentfilesLimit = 10
         self.Program.list_files()
+        self.Program.open_file(5)
+        self.Program.open_file(1)
+        self.Program.open_file(2)
+        self.Program.open_file(3)
+        self.Program.open_file(4)
         self.Program.open_file(5)
         self.Program.open_file(6)
         self.Program.open_file(7)
         self.Program.open_file(8)
-        self.Program.open_file(5)
+        self.Program.open_file(9)
+        self.Program.open_file(10)
+        self.Program.blockRecentList();
+        self.Program.open_file(11)
+        self.Program.open_file(12)
+        self.Program.open_file(13)
+        self.Program.open_file(14)
+        self.Program.open_file(15)
+
+        self.Program.UnBlockRecentList();
+        self.Program.open_file(16)
+        self.Program.open_file(17)
+        
         self.Program.recentList_print()
+
+
 
 
         
