@@ -6,10 +6,11 @@ class Program:
 
     def __init__(self, directory):
         self.directory = directory
+        self.file_List = []
 
     def list_files(self):
-        onlyfiles = [f for f in listdir(self.directory) if isfile(join(self.directory, f))]
-        print (onlyfiles)
+        self.file_List = [f for f in listdir(self.directory) if isfile(join(self.directory, f))]
+        print (self.file_List)
         
 
 class test():
@@ -20,6 +21,8 @@ class test():
     def test_listFiles(self):
         #Class for testing if listing all the files in the default directory;
         self.Program.list_files()
+
+    
 
 
 
