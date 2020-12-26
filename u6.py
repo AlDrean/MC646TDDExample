@@ -77,6 +77,10 @@ class Program:
   #  def recentList_add(self)
 
 
+    def clearRecentList(self):
+        self.file_recents = []
+        self.file_recents_num = []
+
 
 
 class test():
