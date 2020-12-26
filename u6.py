@@ -15,6 +15,7 @@ class Program:
         print (self.file_List)
 
     def open_file(self,numFile):
+        #no refactoring needed;
         self.selectFile = numFile
         f = open(self.directory+self.file_List[self.selectFile], "r")
         
@@ -37,7 +38,11 @@ class test():
     def test_openFile(self,selectedfile):
         self.selectFile = selectedfile
         f = self.Program.open_file(self.selectFile)
+        print ("[File] - {}".format(self.Program.file_List[self.selectFile]))
         print (f)
+
+
+    
 
         
 
